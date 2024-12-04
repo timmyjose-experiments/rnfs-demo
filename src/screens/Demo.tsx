@@ -5,7 +5,7 @@ import { Pressable, Text, View } from 'react-native'
 import { styles } from '../styles'
 import { decrement, getCounterSelector, increment } from '../store/counterSlice'
 import { useCallback } from 'react'
-import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { useAppDispatch, useAppSelector } from '../store/store'
 
 const Demo = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()

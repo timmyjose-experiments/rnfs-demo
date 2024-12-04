@@ -1,11 +1,52 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import counterReducer from './counterSlice'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { persistReducer, persistStore } from 'redux-persist'
+import { TypedUseSelectorHook, useDispatch, useSelector, useStore } from 'react-redux'
+
+const reducers = {
+  counter: counterReducer
+}
+
+export const appReducer = combineReducers(reducers)
+export const rootReducer = (state: any, action: any) => {
+  if (action.type === 'RESET') {
+    return appReducer(undefined, action)
+  }
+  return appReducer(state, action)
+}
+
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
-  reducer: {
-    counter: counterReducer
-  }
+  reducer: persistedReducer,
+  devTools: process.env.NODE_ENV !== 'production',
+  middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE']
+      }
+    })
 })
 
-export type AppState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export const persistor = persistStore(store)
+
+const tstore = configureStore({
+  reducer: reducers
+})
+
+export type AppGetState = typeof tstore.getState
+export type AppState = ReturnType<AppGetState>
+export type AppDispatch = typeof tstore.dispatch
+export type AppStore = typeof tstore
+export type UseDispatchFunc = () => AppDispatch
+export type DispatchFunc<T> = (dispatch: AppDispatch, getState: AppGetState) => T
+
+export const useAppDispatch: UseDispatchFunc = useDispatch
+export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector
+export const useAppStore: () => AppStore = useStore
