@@ -4481,6 +4481,11 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
+lodash.merge@^4.6.2:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
+  integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
+
 lodash.throttle@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
@@ -5592,6 +5597,13 @@ react-native-blob-util@^0.19.11:
   dependencies:
     base-64 "0.1.0"
     glob "^10.3.10"
+
+react-native-fs-store@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/react-native-fs-store/-/react-native-fs-store-0.1.7.tgz#f02182f6b5ca0b8372781040d44ff3c3a1791f72"
+  integrity sha512-OjXohq7jBoeemYWy+TOD5U0WnQIHPMf+2wN4CnWRPz91JKsqh1wgaCyQw4KOpAT3znJnYM9VlJvECPpIZEdf+Q==
+  dependencies:
+    lodash.merge "^4.6.2"
 
 react-native-fs@^2.20.0:
   version "2.20.0"

@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import FileSystemStorage from 'redux-persist-filesystem-storage'
+// import FileSystemStorage from 'redux-persist-filesystem-storage'
 import { persistReducer, persistStore } from 'redux-persist'
 import { TypedUseSelectorHook, useDispatch, useSelector, useStore } from 'react-redux'
 import counterReducer from './counterSlice'
@@ -7,6 +7,9 @@ import largeReducer from './largeSlice'
 import smallReducer from './smallSlice'
 import generalReducer from './generalSlice'
 // import AsyncStorage from '@react-native-async-storage/async-storage'
+import Store from 'react-native-fs-store'
+
+export const FSStore = new Store('default')
 
 const reducers = {
   counter: counterReducer,
@@ -27,7 +30,8 @@ export const rootReducer = (state: any, action: any) => {
 export const persistConfig = {
   key: 'root',
   // storage: AsyncStorage,
-  storage: FileSystemStorage
+  // storage: FileSystemStorage
+  storage: FSStore
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
