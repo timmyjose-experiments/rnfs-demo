@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
   button: {
     backgroundColor: '#c0c0c0',
     borderRadius: 5,
+    margin: 5,
     height: 40,
     width: '50%',
     justifyContent: 'center',
@@ -19,6 +20,7 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     height: 40,
     width: '15%',
+    margin: 5,
     justifyContent: 'center',
     alignItems: 'center'
   }

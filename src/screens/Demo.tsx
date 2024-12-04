@@ -3,15 +3,15 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../App'
 import { Pressable, Text, View } from 'react-native'
 import { styles } from '../styles'
-import { useDispatch, useSelector } from 'react-redux'
 import { decrement, getCounterSelector, increment } from '../store/counterSlice'
 import { useCallback } from 'react'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 
 const Demo = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
-  const counter = useSelector(getCounterSelector)
-  const dispatch = useDispatch()
+  const counter = useAppSelector(getCounterSelector)
+  const dispatch = useAppDispatch()
 
   const handleIncrement = useCallback(async () => {
     dispatch(increment())
