@@ -3,12 +3,17 @@ import counterReducer from './counterSlice'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { persistReducer, persistStore } from 'redux-persist'
 import { TypedUseSelectorHook, useDispatch, useSelector, useStore } from 'react-redux'
+import largeReducer from './largeSlice'
+import smallReducer from './smallSlice'
 
 const reducers = {
-  counter: counterReducer
+  counter: counterReducer,
+  large: largeReducer,
+  small: smallReducer
 }
 
 export const appReducer = combineReducers(reducers)
+
 export const rootReducer = (state: any, action: any) => {
   if (action.type === 'RESET') {
     return appReducer(undefined, action)
